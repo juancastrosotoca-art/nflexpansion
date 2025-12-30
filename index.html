@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>NFL EXPANSION</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TIPOGRAFÍAS -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+.team-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+    /* ================= BODY Y TIPOGRAFÍAS ================= */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f8fc;
+      color: #1a1a1a;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    /* ================= HEADER / BANNER ================= */
+    header {
+      position: relative;
+      background-image: url("estadio.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+
+    .header-content {
+      position: relative;
+      text-align: center;
+      color: white;
+      max-width: 900px;
+      padding: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .header-title img {
+      height: 55px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .subtitle {
+      margin-top: 15px;
+      font-size: 1.15rem;
+      color: #cfcfcf;
+    }
+
+    /* ================= SECCIONES ================= */
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    section p.intro {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.05rem;
+      color: #333;
+      line-height: 1.5;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    /* ================= TARJETAS ================= */
+    .teams {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .team-card {
+      background-color: #ffffff;
+      border-radius: 14px;
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.3s ease;
+      animation: fadeInUp 1.3s ease forwards;
+    }
+
+    .team-card img {
+      height: 110px;
+      margin-bottom: 15px;
+    }
+
+    .team-card h3 {
+      margin: 10px 0 8px;
+      font-size: 1.4rem;
+    }
+
+    .team-card span {
+      font-size: 0.85rem;
+      color: #777;
+      font-weight: 500;
+    }
+
+    .team-card p {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    /* Hover colores por equipo */
+    .albuquerque:hover { border-top: 4px solid #c8102e; } /* rojo */
+    .san-antonio:hover { border-top: 4px solid #b4975a; } /* dorado */
+    .portland:hover { border-top: 4px solid #2a7f62; } /* verde */
+    .san-diego:hover { border-top: 4px solid #1ca3ec; } /* azul */
+    .saint-louis:hover { border-top: 4px solid #1ca3ec; } /* rojo */
+    .mexico:hover { border-top: 4px solid #d93f2d; } /* verde oscuro */
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.15);
+    }
+
+    /* ================= MAPA ================= */
+    .map-section {
+      text-align: center;
+    }
+
+    .map-section p {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .mapa-wrapper {
+      display: inline-block;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mapa-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+
+    .mapa-wrapper img {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* ================= ETIQUETAS EN EL MAPA ================= */
+    .map-label {
+      position: absolute;
+      background: rgba(255,255,255,0.85);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      transform: translate(-50%, -50%);
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background-color: #0a2540;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 80px;
+    }
+
+    /* ================= ANIMACIONES ================= */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      .header-title {
+        flex-direction: column;
+      }
+      h1 { font-size: 2.2rem; }
+      .team-card img { height: 90px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="header-title">
+      <img src="nfl-logo.png">
+      <h1>NFL EXPANSION</h1>
+    </div>
+    <p class="subtitle">
+      Proyecto conceptual de expansión de la NFL en Estados Unidos y México
+    </p>
+  </div>
+</header>
+
+<section>
+  <h2>El Proyecto</h2>
+  <p class="intro">
+    La expansión de la NFL que proponemos busca combinar historia, cultura, estrategia geográfica y viabilidad comercial.
+Cada nueva franquicia ha sido seleccionada considerando demografía, mercado potencial, identidad local y legado histórico.
+Este proyecto conceptual tiene como objetivo explorar cómo la NFL podría crecer de manera lógica, coherente y atractiva, creando nuevas rivalidades, fortaleciendo la presencia en el suroeste americano y llevando el fútbol americano a territorios internacionales como México.
+
+Cada ciudad elegida aporta una riqueza cultural única, mientras que los nombres y logotipos de los equipos reflejan la identidad de la región y sus tradiciones.
+Las nuevas franquicias no solo buscan competir en el campo, sino convertirse en símbolos culturales y comerciales, capaces de generar entusiasmo en fanáticos y medios, y de consolidar la NFL como un espectáculo global.
+  </p>
+</section>
+
+<section>
+  <h2>Nuevas Franquicias</h2>
+
+  <div class="teams">
+<a href="franquicias/albuquerque-toros.html" class="team-link">
+  <div class="team-card albuquerque">
+    <img src="logos/albuquerque-toros.png">
+    <h3>Albuquerque Toros</h3>
+    <span>AFC</span>
+      <p>Situados en el corazón de Nuevo México, los Albuquerque Toros son un homenaje a la herencia hispana de la región.
+Su nombre y logotipo reflejan la tradición española y la fuerza de la tierra, combinando el rojo y dorado de la bandera española con la pasión del desierto del suroeste.
+Albuquerque, históricamente olvidada por las grandes ligas, adquiere ahora una franquicia que representa orgullo local, autenticidad y espíritu competitivo.
+Los Toros no solo serán un equipo; serán un símbolo de la identidad cultural de Nuevo México en la NFL.</p>
+    </div>
+<a href="franquicias/san-antonio-missions.html" class="team-link">
+    <div class="team-card san-antonio">
+      <img src="logos/san-antonio-missions.png">
+      <h3>San Antonio Missions</h3>
+      <span>NFC</span>
+      <p>Inspirados en las misiones españolas que fundaron Texas, los San Antonio Missions buscan capturar la esencia histórica y cultural de la ciudad.
+Su logotipo, tipografía y colores negros y dorados evocan tradición y solemnidad, mientras que la franquicia entera rinde homenaje al pasado colonial y al carácter resiliente de la región.
+Más allá de la estética, los Missions representan una deuda histórica de la NFL con San Antonio, y aspiran a convertirse en un equipo top en merchandising, cobertura mediática y rendimiento deportivo.</p>
+    </div>
+<a href="franquicias/portland-plants.html" class="team-link">
+    <div class="team-card portland">
+      <img src="logos/portland-plants.png">
+      <h3>Portland Plants</h3>
+      <span>NFC</span>
+      <p>La franquicia de Portland refleja el espíritu natural y sostenible del noroeste americano.
+Con verdes y azules claros en su identidad visual, los Portland Plants evocan bosques, ríos y la conexión con la naturaleza de la región.
+Su presencia en la NFL busca crear una nueva rivalidad con Seattle, al tiempo que promueve una identidad fresca, innovadora y respetuosa con el medio ambiente.
+Los Plants son un ejemplo de cómo la NFL puede combinar deporte, identidad local y valores modernos.</p>
+    </div>
+<a href="franquicias/san-diego-pacifics.html" class="team-link">
+    <div class="team-card san-diego">
+      <img src="logos/san-diego-pacifics.png">
+      <h3>San Diego Pacifics</h3>
+      <span>AFC</span>
+      <p>El nombre “Pacifics” captura la esencia de San Diego: relajada, veraniega y cosmopolita, con el océano Pacífico como telón de fondo.
+Esta franquicia devuelve a San Diego al mapa de la NFL tras la salida de los Chargers, equilibrando interés comercial y legado deportivo.
+Sus colores azul, dorado y verde evocan la playa, la arena y el muelle, mientras que su identidad transmite calma, diversión y orgullo local.
+Los Pacifics buscan ser un equipo accesible, mediático y muy visual, con un branding moderno y atractivo.</p>
+    </div>
+<a href="franquicias/saint-louis-archs.html" class="team-link">
+    <div class="team-card saint-louis">
+      <img src="logos/saint-louis-archs.png">
+      <h3>Saint Louis Archs</h3>
+      <span>AFC</span>
+      <p>El nombre “Archs” rinde homenaje al Gateway Arch, iconico monumento de la ciudad de Saint Louis y el estado de Missouri, que honra el inicio de la expansión americana hacia el oeste durante el S.XIX. Además esta nueva franquicia consigue representar a otra gran ciudad del Midwest americano, que gracias a los Archs consigue otra representación en la NFL. Por último este equipo es una deuda histórica de la liga con la ciudad misuriana. Al igual que el Gateway Arch, esta franquicia "marca el camino de un país".</p>
+    </div>
+<a href="franquicias/méxico-aztecas.html" class="team-link">
+    <div class="team-card mexico">
+      <img src="logos/mexico-aztecas.png">
+      <h3>México Aztecas</h3>
+      <span>NFC</span>
+      <p>Los México Aztecas representan la primera expansión internacional sólida de la NFL en Latinoamérica.
+Basados en Ciudad de México y con el icónico Estadio Azteca como hogar, combinan historia, cultura y espectáculo deportivo.
+Su nombre rinde homenaje a la civilización Azteca, con un branding claro y directo que refleja tanto orgullo histórico como ambición internacional.
+Esta franquicia simboliza la puerta de la NFL hacia mercados internacionales, ampliando el alcance de la liga y conectando con millones de fanáticos nuevos.</p>
+    </div>
+</a>
+
+  </div>
+</section>
+
+<section class="map-section">
+  <h2>Mapa de la Expansión</h2>
+  <p>Distribución geográfica de la NFL tras la expansión</p>
+
+  <div class="mapa-wrapper" style="position:relative; display:inline-block;">
+    <img src="mapa-nfl-expansion.png" alt="Mapa NFL Expansión EE.UU. y México">
+
+    </section>
+<section class="future-expansion">
+  <div class="expansion-card">
+    <p>
+      <strong>Actualizaciones semanales:</strong> en el futuro posible expansión a: Toronto, Omaha, Virginia Beach, Milwaukee, Oklahoma City, Huntsville, Memphis, Des Moines, Edmonton y Salt Lake City.
+    </p>
+  </div>
+</section>
+
+<style>
+.future-expansion {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.expansion-card {
+  background-image: url('skyline-americano.jpg'); /* Imagen de skyline */
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 25px 30px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  color: white;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.expansion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.2);
+}
+
+.expansion-card p {
+  margin: 0;
+  font-weight: 500;
+}
+</style>
+
+<footer>
+  DISCLAIMER: Proyecto educativo/sin ánimo de lucro, hecho por J.C.S, director y creador de NFL EXPANSION SIMULATION AND CREATION S.A · NFL EXPANSION. Para mas info @para.cuando.sea.necesario.usarla@gmail.com, cuenta oficial de NFL EXPANSION.
+</footer>
+
+</body>
+</html>
